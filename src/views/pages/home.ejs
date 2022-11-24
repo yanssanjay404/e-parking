@@ -1,0 +1,136 @@
+<section class="home-page">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+                    <%- include('../partials/header'); %>
+                </header>
+            </div>
+        </div>
+        <br>
+        <br>
+        <p><b>Data Parkir Masuk</b></p>
+        <table class="table" id="myTable1">
+            <thead>
+                <input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="kode transaksi"
+                    title="Type in a name">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Kode Transaksi</th>
+                    <th scope="col">Tgl/Jam Masuk</th>
+                    <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col">Nomor Polisi</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<dataIn.length; i++) {%>
+                    <tr>
+                        <th scope="row">
+                            <%= i+1%>
+                        </th>
+                        <td>
+                            <%= dataIn[i].code_transaction%>
+                        </td>
+                        <td>
+                            <%= dataIn[i].time_transaction_in%>
+                        </td>
+                        <td>
+                            <%= dataIn[i].transportation_type%>
+                        </td>
+                        <td>
+                            <%= dataIn[i].police_number%>
+                        </td>
+                        <td>
+                            <%= dataIn[i].status%>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <p><b>Data Parkir Keluar</b></p>
+        <table class="table" id="myTable">
+            <thead>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="kode transaksi"
+                    title="Type in a name">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Kode Transaksi</th>
+                    <th scope="col">Tgl/Jam Keluar</th>
+                    <th scope="col">Lama Parkir</th>
+                    <th scope="col">Tarif</th>
+                    <th scope="col">Total Bayar</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<dataOut.length; i++) {%>
+                    <tr>
+                        <th scope="row">
+                            <%= i+1%>
+                        </th>
+                        <td>
+                            <%= dataOut[i].code_transaction_out%>
+                        </td>
+                        <td>
+                            <%= dataOut[i].time_transaction_out%>
+                        </td>
+                        <td>
+                            <%= dataOut[i].long_parking%>
+                        </td>
+                        <td>
+                            <%= dataOut[i].parking_rates%>
+                        </td>
+                        <td>
+                            <%= dataOut[i].total_pay%>
+                        </td>
+                        <td>
+                            <%= dataOut[i].status_out%>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</section>
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    function myFunction1() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable1");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>

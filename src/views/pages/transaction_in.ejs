@@ -1,0 +1,39 @@
+<section class="home-page">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <header>
+                    <%- include('../partials/header'); %>
+                </header>
+            </div>
+        </div>
+        <br>
+        <br>
+        <p><b>Parkir Masuk</b></p>
+        <form action="/create" method="POST">
+            <div class="row">
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example" style="width: 200px;" name="transportation_type">
+                        <option selected>Jenis kendaraan</option>
+                        <option value="motor">Motor</option>
+                        <option value="mobil">Mobil</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input name="police_number" class="form-control" placeholder="No Polisi" style="width: 200px;">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary mb-2">Simpan</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
